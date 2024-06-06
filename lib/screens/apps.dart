@@ -9,7 +9,10 @@ class HomePage extends StatelessWidget {
         backgroundColor: Colors.black,
         elevation: 0,
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(
+            Icons.arrow_back,
+            color: Colors.white,
+          ),
           onPressed: () {
             // Handle back button
             Navigator.pushNamed(context, '/home');
