@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'screens/chat.dart';
 import 'splash.dart';
 import 'screens/image.dart';
+import 'screens/apps.dart';
 import 'screens/account.dart';
 
 void main() {
@@ -21,10 +22,11 @@ class MyApp extends StatelessWidget {
       home: const Splash(),
       debugShowCheckedModeBanner: false,
       routes: {
+        '/apps': (context) => AppScreen(),
         '/home': (context) => MainPage(),
+        '/chat': (context) => ChatScreen(),
         '/image': (context) => SearchScreen(),
         '/account': (context) => AccountScreen(),
-        '/chat': (context) => ChatScreen(),
       },
     );
   }
@@ -92,19 +94,19 @@ class _MainPageState extends State<MainPage> {
             // Navigate to the selected screen based on index
             switch (newIndex) {
               case 0:
-                Navigator.pushNamed(context, '/home');
+                Navigator.pushNamed(context, '/apps');
                 break;
               case 1:
-                Navigator.pushNamed(context, '/search');
+                Navigator.pushNamed(context, '/home');
                 break;
               case 2:
-                Navigator.pushNamed(context, '/alerts');
+                Navigator.pushNamed(context, '/chat');
                 break;
               case 3:
-                Navigator.pushNamed(context, '/account');
+                Navigator.pushNamed(context, '/image');
                 break;
               case 4:
-                Navigator.pushNamed(context, '/progress');
+                Navigator.pushNamed(context, '/account');
                 break;
             }
           },
