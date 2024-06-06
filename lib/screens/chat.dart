@@ -10,7 +10,7 @@ class ChatScreen extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             // Handle back button
-            Navigator.pushNamed(context, '/apps');
+            Navigator.pushNamed(context, '/home');
           },
         ),
         actions: [

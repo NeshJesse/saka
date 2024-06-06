@@ -52,7 +52,7 @@ class _MainPageState extends State<MainPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("HistMan"),
+        title: const Text("SakaBOT"),
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
@@ -63,7 +63,7 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Colors.greenAccent[400],
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.bar_chart_rounded),
+            icon: const Icon(Icons.add_card_rounded),
             tooltip: 'Progress',
             onPressed: () {
               // Handle account circle button press
