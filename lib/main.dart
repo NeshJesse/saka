@@ -115,6 +115,7 @@ class _MainPageState extends State<MainPage> {
           unselectedItemColor: Colors.red,
           type: BottomNavigationBarType.fixed,
           items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.apps), label: 'Apps'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.chat_rounded), label: 'Chat'),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
