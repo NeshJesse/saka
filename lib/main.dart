@@ -86,6 +86,24 @@ class _MainPageState extends State<MainPage> {
               icon: Icons.brush,
             ),
             ExploreCard(
+              title: 'Art',
+              description:
+                  'Create digital art, from sketches to finished pieces',
+              icon: Icons.brush,
+            ),
+            ExploreCard(
+              title: 'Art',
+              description:
+                  'Create digital art, from sketches to finished pieces',
+              icon: Icons.brush,
+            ),
+            ExploreCard(
+              title: 'Art',
+              description:
+                  'Create digital art, from sketches to finished pieces',
+              icon: Icons.brush,
+            ),
+            ExploreCard(
               title: 'Booking',
               description:
                   'Find stays, flights, car rentals, airport taxis, and attractions.',
