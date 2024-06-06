@@ -8,6 +8,13 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         backgroundColor: Colors.black,
         elevation: 0,
+        leading: IconButton(
+          icon: Icon(Icons.arrow_back),
+          onPressed: () {
+            // Handle back button
+            Navigator.pushNamed(context, '/home');
+          },
+        ),
         actions: [
           IconButton(
             icon: Icon(Icons.add, color: Colors.white),
