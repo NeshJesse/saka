@@ -74,9 +74,25 @@ class _MainPageState extends State<MainPage> {
         ],
       ),
       body: Center(
-        child: ListView(
-          padding: const EdgeInsets.all(16.0),
-          children: [],
+        child: GridView.count(
+          crossAxisCount: 2,
+          crossAxisSpacing: 12,
+          mainAxisSpacing: 16,
+          children: [
+            ExploreCard(
+              title: 'Art',
+              description:
+                  'Create digital art, from sketches to finished pieces',
+              icon: Icons.brush,
+            ),
+            ExploreCard(
+              title: 'Booking',
+              description:
+                  'Find stays, flights, car rentals, airport taxis, and attractions.',
+              icon: Icons.book_online,
+            ),
+            // Add more cards as needed
+          ],
         ),
       ),
       bottomNavigationBar: Container(
@@ -123,6 +139,45 @@ class _MainPageState extends State<MainPage> {
           unselectedLabelStyle:
               TextStyle(fontWeight: FontWeight.normal, color: Colors.black),
         ),
+      ),
+    );
+  }
+}
+
+class ExploreCard extends StatelessWidget {
+  final String title;
+  final String description;
+  final IconData icon;
+
+  const ExploreCard({
+    required this.title,
+    required this.description,
+    required this.icon,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      padding: EdgeInsets.all(16),
+      decoration: BoxDecoration(
+        color: Colors.grey[850],
+        borderRadius: BorderRadius.circular(20),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Icon(icon, color: Colors.white, size: 30),
+          SizedBox(height: 10),
+          Text(
+            title,
+            style: TextStyle(color: Colors.white, fontSize: 18),
+          ),
+          SizedBox(height: 10),
+          Text(
+            description,
+            style: TextStyle(color: Colors.grey, fontSize: 14),
+          ),
+        ],
       ),
     );
   }
