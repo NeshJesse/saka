@@ -120,9 +120,6 @@ class _MainPageState extends State<MainPage> {
                 icon: Icon(Icons.chat_rounded), label: 'Chat'),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
             BottomNavigationBarItem(
-                icon: Icon(Icons.notifications_active_rounded),
-                label: 'Alerts'),
-            BottomNavigationBarItem(
                 icon: Icon(Icons.account_circle_rounded), label: 'Account'),
           ],
           elevation: 8,
