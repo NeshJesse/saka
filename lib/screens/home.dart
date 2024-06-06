@@ -10,7 +10,7 @@ class NewScreen extends StatelessWidget {
           icon: Icon(Icons.arrow_back),
           onPressed: () {
             // Handle back button
-            Navigator.pushNamed(context, '/apps');
+            Navigator.pushNamed(context, '/home');
           },
         ),
         actions: [
@@ -36,9 +36,6 @@ class NewScreen extends StatelessWidget {
                     children: [
                       Row(
                         children: [
-                          CircleAvatar(
-                            child: Icon(Icons.person),
-                          ),
                           SizedBox(width: 8.0),
                           Text('Analyze UX for Job Finder app'),
                         ],

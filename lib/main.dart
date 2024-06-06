@@ -4,6 +4,7 @@ import 'splash.dart';
 import 'screens/image.dart';
 import 'screens/apps.dart';
 import 'screens/account.dart';
+import 'screens/home.dart';
 
 void main() {
   runApp(MyApp());
@@ -27,6 +28,7 @@ class MyApp extends StatelessWidget {
         '/chat': (context) => ChatScreen(),
         '/image': (context) => SearchScreen(),
         '/account': (context) => AccountScreen(),
+        '/newchat': (context) => NewScreen(),
       },
     );
   }
