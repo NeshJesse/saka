@@ -1,178 +1,128 @@
 import 'package:flutter/material.dart';
+import 'screens/chat.dart';
+import 'splash.dart';
+import 'screens/image.dart';
+import 'screens/apps.dart';
+import 'screens/account.dart';
 
 void main() {
   runApp(MyApp());
 }
 
 class MyApp extends StatelessWidget {
+  const MyApp({Key? key}) : super(key: key);
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      title: 'Saka BOT',
+      theme: ThemeData(
+        primarySwatch: Colors.green,
+      ),
+      home: const Splash(),
       debugShowCheckedModeBanner: false,
-      home: HomePage(),
+      routes: {
+        '/apps': (context) => AppScreen(),
+        '/home': (context) => MainPage(),
+        '/chat': (context) => ChatScreen(),
+        '/image': (context) => SearchScreen(),
+        '/account': (context) => AccountScreen(),
+      },
     );
   }
 }
 
-class HomePage extends StatelessWidget {
+class MainPage extends StatefulWidget {
+  const MainPage({Key? key}) : super(key: key);
+
+  @override
+  State<MainPage> createState() => _MainPageState();
+}
+
+class _MainPageState extends State<MainPage> {
+  int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = 0; // Initialize currentIndex
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.black,
       appBar: AppBar(
-        backgroundColor: Colors.black,
-        elevation: 0,
-        actions: [
-          IconButton(
-            icon: Icon(Icons.add, color: Colors.white),
-            onPressed: () {},
+        title: const Text("SakaBOT"),
+        centerTitle: true,
+        shape: const RoundedRectangleBorder(
+          borderRadius: BorderRadius.only(
+            bottomRight: Radius.circular(25),
+            bottomLeft: Radius.circular(25),
           ),
+        ),
+        backgroundColor: Colors.greenAccent[400],
+        actions: <Widget>[
           IconButton(
-            icon: Icon(Icons.notifications, color: Colors.white),
-            onPressed: () {},
+            icon: const Icon(Icons.add_card_rounded),
+            tooltip: 'Progress',
+            onPressed: () {
+              // Handle account circle button press
+              // Navigate to the Progress screen
+              Navigator.pushNamed(context, '/progress');
+            },
           ),
         ],
       ),
-      bottomNavigationBar: BottomNavigationBar(
-        backgroundColor: Colors.black,
-        selectedItemColor: Colors.white,
-        unselectedItemColor: Colors.grey,
-        items: [
-          BottomNavigationBarItem(
-            icon: Icon(Icons.home),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.chat_bubble_outline),
-            label: '',
-          ),
-          BottomNavigationBarItem(
-            icon: Icon(Icons.person),
-            label: '',
-          ),
-        ],
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            ProfileHeader(),
-            SizedBox(height: 20),
-            ExploreSection(),
-          ],
+      body: Center(
+        child: ListView(
+          padding: const EdgeInsets.all(16.0),
+          children: [],
         ),
       ),
-    );
-  }
-}
-
-class ProfileHeader extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        CircleAvatar(
-          radius: 25,
-          backgroundImage: NetworkImage(
-              'https://via.placeholder.com/150'), // Replace with the user's profile image URL
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Colors.grey[300]!, // Border color
+              width: 1.0, // Border width
+            ),
+          ),
         ),
-        SizedBox(height: 10),
-        Text(
-          'Hi, Todd 👋',
-          style: TextStyle(color: Colors.white, fontSize: 20),
-        ),
-        SizedBox(height: 10),
-        GestureDetector(
-          onTap: () {
-            // Handle chat tap
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (int newIndex) {
+            // Navigate to the selected screen based on index
+            switch (newIndex) {
+              case 0:
+                Navigator.pushNamed(context, '/apps');
+                break;
+              case 1:
+                Navigator.pushNamed(context, '/chat');
+                break;
+              case 2:
+                Navigator.pushNamed(context, '/image');
+                break;
+              case 3:
+                Navigator.pushNamed(context, '/account');
+                break;
+            }
           },
-          child: Container(
-            padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
-            decoration: BoxDecoration(
-              color: Colors.grey[900],
-              borderRadius: BorderRadius.circular(30),
-            ),
-            child: Row(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  'Tap to chat',
-                  style: TextStyle(color: Colors.white, fontSize: 16),
-                ),
-                SizedBox(width: 10),
-                Icon(Icons.mic, color: Colors.white),
-              ],
-            ),
-          ),
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.red,
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.apps), label: 'Apps'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.chat_rounded), label: 'Chat'),
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_rounded), label: 'Account'),
+          ],
+          elevation: 8,
+          unselectedLabelStyle:
+              TextStyle(fontWeight: FontWeight.normal, color: Colors.black),
         ),
-      ],
-    );
-  }
-}
-
-class ExploreSection extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Expanded(
-      child: GridView.count(
-        crossAxisCount: 2,
-        crossAxisSpacing: 16,
-        mainAxisSpacing: 16,
-        children: [
-          ExploreCard(
-            title: 'Art',
-            description: 'Create digital art, from sketches to finished pieces',
-            icon: Icons.brush,
-          ),
-          ExploreCard(
-            title: 'Booking',
-            description:
-                'Find stays, flights, car rentals, airport taxis, and attractions.',
-            icon: Icons.book_online,
-          ),
-          // Add more cards as needed
-        ],
-      ),
-    );
-  }
-}
-
-class ExploreCard extends StatelessWidget {
-  final String title;
-  final String description;
-  final IconData icon;
-
-  const ExploreCard({
-    required this.title,
-    required this.description,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.grey[850],
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: Colors.white, size: 30),
-          SizedBox(height: 10),
-          Text(
-            title,
-            style: TextStyle(color: Colors.white, fontSize: 18),
-          ),
-          SizedBox(height: 10),
-          Text(
-            description,
-            style: TextStyle(color: Colors.grey, fontSize: 14),
-          ),
-        ],
       ),
     );
   }
