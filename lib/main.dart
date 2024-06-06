@@ -68,7 +68,7 @@ class _MainPageState extends State<MainPage> {
             onPressed: () {
               // Handle account circle button press
               // Navigate to the Progress screen
-              Navigator.pushNamed(context, '/progress');
+              Navigator.pushNamed(context, '/newchat');
             },
           ),
         ],
@@ -139,6 +139,9 @@ class _MainPageState extends State<MainPage> {
               case 3:
                 Navigator.pushNamed(context, '/account');
                 break;
+              case 4:
+                Navigator.pushNamed(context, '/newchat');
+                break;
             }
           },
           backgroundColor: Colors.white,
@@ -184,13 +187,13 @@ class ExploreCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Icon(icon, color: Colors.white, size: 30),
+          Icon(icon, color: Colors.white, size: 10),
           SizedBox(height: 10),
           Text(
             title,
-            style: TextStyle(color: Colors.white, fontSize: 18),
+            style: TextStyle(color: Colors.white, fontSize: 14),
           ),
-          SizedBox(height: 10),
+          SizedBox(height: 15),
           Text(
             description,
             style: TextStyle(color: Colors.grey, fontSize: 14),
