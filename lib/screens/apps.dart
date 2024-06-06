@@ -35,13 +35,14 @@ class HomePage extends StatelessWidget {
         unselectedItemColor: Colors.grey,
         items: [
           BottomNavigationBarItem(
-            icon: Icon(Icons.home),
+            icon: Icon(Icons.apps),
             label: '',
           ),
           BottomNavigationBarItem(
             icon: Icon(Icons.chat_bubble_outline),
             label: '',
           ),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
           BottomNavigationBarItem(
             icon: Icon(Icons.person),
             label: '',
