@@ -97,15 +97,12 @@ class _MainPageState extends State<MainPage> {
                 Navigator.pushNamed(context, '/apps');
                 break;
               case 1:
-                Navigator.pushNamed(context, '/home');
-                break;
-              case 2:
                 Navigator.pushNamed(context, '/chat');
                 break;
-              case 3:
+              case 2:
                 Navigator.pushNamed(context, '/image');
                 break;
-              case 4:
+              case 3:
                 Navigator.pushNamed(context, '/account');
                 break;
             }
