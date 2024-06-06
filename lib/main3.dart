@@ -22,7 +22,7 @@ class MyApp extends StatelessWidget {
       home: const Splash(),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/apps': (context) => AppScreen(),
+        '/apps': (context) => HomePage(),
         '/home': (context) => MainPage(),
         '/chat': (context) => ChatScreen(),
         '/image': (context) => SearchScreen(),
