@@ -63,7 +63,7 @@ class _MainPageState extends State<MainPage> {
         backgroundColor: Colors.greenAccent[400],
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.add_card_rounded),
+            icon: const Icon(Icons.book_rounded),
             tooltip: 'Progress',
             onPressed: () {
               // Handle account circle button press
