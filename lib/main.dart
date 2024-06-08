@@ -5,6 +5,7 @@ import 'screens/image.dart';
 import 'screens/apps.dart';
 import 'screens/account.dart';
 import 'screens/home.dart';
+import 'screens/feat.dart';
 
 void main() {
   runApp(MyApp());
@@ -62,7 +63,7 @@ class _MainPageState extends State<MainPage> {
             bottomLeft: Radius.circular(25),
           ),
         ),
-        backgroundColor: Colors.greenAccent[400],
+        backgroundColor: Colors.lightBlue[100],
         actions: <Widget>[
           IconButton(
             icon: const Icon(Icons.book_rounded),
@@ -77,41 +78,42 @@ class _MainPageState extends State<MainPage> {
       ),
       body: Center(
         child: GridView.count(
-          crossAxisCount: 2,
-          crossAxisSpacing: 12,
-          mainAxisSpacing: 16,
+          crossAxisCount: 1,
+          crossAxisSpacing: 5,
+          mainAxisSpacing: 5,
           children: [
-            ExploreCard(
-              title: 'Art',
-              description:
-                  'Create digital art, from sketches to finished pieces',
-              icon: Icons.brush,
+            FtBox(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
+              title: 'Breaking News',
+              subtitle: 'Important news update',
+              buttonText1: 'Read More',
+              buttonText2: 'Share',
             ),
-            ExploreCard(
-              title: 'Art',
-              description:
-                  'Create digital art, from sketches to finished pieces',
-              icon: Icons.brush,
+            FtBox(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
+              title: 'Breaking News',
+              subtitle: 'Important news update',
+              buttonText1: 'Read More',
+              buttonText2: 'Share',
             ),
-            ExploreCard(
-              title: 'Art',
-              description:
-                  'Create digital art, from sketches to finished pieces',
-              icon: Icons.brush,
+            FtBox(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
+              title: 'Breaking News',
+              subtitle: 'Important news update',
+              buttonText1: 'Read More',
+              buttonText2: 'Share',
             ),
-            ExploreCard(
-              title: 'Art',
-              description:
-                  'Create digital art, from sketches to finished pieces',
-              icon: Icons.brush,
+            FtBox(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
+              title: 'Breaking News',
+              subtitle: 'Important news update',
+              buttonText1: 'Read More',
+              buttonText2: 'Share',
             ),
-            ExploreCard(
-              title: 'Booking',
-              description:
-                  'Find stays, flights, car rentals, airport taxis, and attractions.',
-              icon: Icons.book_online,
-            ),
-            // Add more cards as needed
           ],
         ),
       ),
@@ -162,45 +164,6 @@ class _MainPageState extends State<MainPage> {
           unselectedLabelStyle:
               TextStyle(fontWeight: FontWeight.normal, color: Colors.black),
         ),
-      ),
-    );
-  }
-}
-
-class ExploreCard extends StatelessWidget {
-  final String title;
-  final String description;
-  final IconData icon;
-
-  const ExploreCard({
-    required this.title,
-    required this.description,
-    required this.icon,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      padding: EdgeInsets.all(16),
-      decoration: BoxDecoration(
-        color: Colors.grey[850],
-        borderRadius: BorderRadius.circular(20),
-      ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Icon(icon, color: Colors.white, size: 10),
-          SizedBox(height: 10),
-          Text(
-            title,
-            style: TextStyle(color: Colors.white, fontSize: 14),
-          ),
-          SizedBox(height: 15),
-          Text(
-            description,
-            style: TextStyle(color: Colors.grey, fontSize: 14),
-          ),
-        ],
       ),
     );
   }
