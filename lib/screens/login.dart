@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'main.dart';
+import '../main2.dart';
 
 class Login extends StatelessWidget {
   final TextEditingController emailController = TextEditingController();

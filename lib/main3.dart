@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'screens/chat.dart';
-import 'splash.dart';
-import 'screens/image.dart';
-import 'screens/apps.dart';
+import 'screens/splash.dart';
+import 'screens/search.dart';
 import 'screens/account.dart';
+import 'screens/feat.dart';
+import 'screens/bmark.dart';
 
 void main() {
   runApp(MyApp());
@@ -22,10 +22,9 @@ class MyApp extends StatelessWidget {
       home: const Splash(),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/apps': (context) => HomePage(),
         '/home': (context) => MainPage(),
-        '/chat': (context) => ChatScreen(),
         '/image': (context) => SearchScreen(),
+        '/bookmark': (context) => BookmarksPage(),
         '/account': (context) => AccountScreen(),
       },
     );
@@ -60,23 +59,54 @@ class _MainPageState extends State<MainPage> {
             bottomLeft: Radius.circular(25),
           ),
         ),
-        backgroundColor: Colors.greenAccent[400],
+        backgroundColor: Colors.lightBlue[100],
         actions: <Widget>[
           IconButton(
-            icon: const Icon(Icons.add_card_rounded),
-            tooltip: 'Progress',
+            icon: const Icon(Icons.book_rounded),
+            tooltip: 'New Chat',
             onPressed: () {
               // Handle account circle button press
               // Navigate to the Progress screen
-              Navigator.pushNamed(context, '/progress');
+              Navigator.pushNamed(context, '/newchat');
             },
           ),
         ],
       ),
       body: Center(
-        child: ListView(
-          padding: const EdgeInsets.all(16.0),
-          children: [],
+        child: GridView.count(
+          crossAxisCount: 1,
+          crossAxisSpacing: 5,
+          mainAxisSpacing: 5,
+          children: [
+            FtBox(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
+              title: 'Post to X command',
+              subtitle: 'Instruct Saka to Tweet on your behalf ',
+              buttonText1: 'Read More',
+            ),
+            FtBox(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
+              title: 'Image Search',
+              subtitle: 'Find people using their public photos',
+              buttonText1: 'Read More',
+            ),
+            FtBox(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
+              title: 'Breaking News',
+              subtitle: 'Important news update',
+              buttonText1: 'Read More',
+            ),
+            FtBox(
+              imageUrl:
+                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
+              title: 'Breaking News',
+              subtitle: 'Important news update',
+              buttonText1: 'Read More',
+            ),
+          ],
         ),
       ),
       bottomNavigationBar: Container(
@@ -97,10 +127,10 @@ class _MainPageState extends State<MainPage> {
                 Navigator.pushNamed(context, '/apps');
                 break;
               case 1:
-                Navigator.pushNamed(context, '/chat');
+                Navigator.pushNamed(context, '/image');
                 break;
               case 2:
-                Navigator.pushNamed(context, '/image');
+                Navigator.pushNamed(context, '/bookmark');
                 break;
               case 3:
                 Navigator.pushNamed(context, '/account');
@@ -109,13 +139,13 @@ class _MainPageState extends State<MainPage> {
           },
           backgroundColor: Colors.white,
           selectedItemColor: Colors.black,
-          unselectedItemColor: Colors.red,
+          unselectedItemColor: Colors.lightBlue[200],
           type: BottomNavigationBarType.fixed,
           items: const [
             BottomNavigationBarItem(icon: Icon(Icons.apps), label: 'Apps'),
-            BottomNavigationBarItem(
-                icon: Icon(Icons.chat_rounded), label: 'Chat'),
             BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.bookmark), label: 'Bookmark'),
             BottomNavigationBarItem(
                 icon: Icon(Icons.account_circle_rounded), label: 'Account'),
           ],
