@@ -5,6 +5,7 @@ import 'screens/account.dart';
 import 'screens/feat.dart';
 import 'screens/scrape.dart';
 import 'screens/bmark.dart';
+import 'screens/display.dart';
 
 void main() {
   runApp(MyApp());
@@ -23,24 +24,23 @@ class MyApp extends StatelessWidget {
       home: const Splash(),
       debugShowCheckedModeBanner: false,
       routes: {
-        '/home': (context) => MainPage(),
+        '/home': (context) => DisPage(),
         '/image': (context) => SearchPage(),
         '/bookmark': (context) => BookmarksPage(),
         '/account': (context) => AccountScreen(),
         '/scrape': (context) => ScrapePage(),
+        '/display': (context) => DisPage()
       },
     );
   }
 }
 
-class MainPage extends StatefulWidget {
-  const MainPage({Key? key}) : super(key: key);
-
+class DisPage extends StatefulWidget {
   @override
-  State<MainPage> createState() => _MainPageState();
+  _DisPageState createState() => _DisPageState();
 }
 
-class _MainPageState extends State<MainPage> {
+class _DisPageState extends State<DisPage> {
   int _currentIndex = 0;
 
   @override
@@ -74,41 +74,34 @@ class _MainPageState extends State<MainPage> {
           ),
         ],
       ),
-      body: Center(
-        child: GridView.count(
-          crossAxisCount: 1,
-          crossAxisSpacing: 5,
-          mainAxisSpacing: 5,
-          children: [
-            FtBox(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
-              title: 'Post to X command',
-              subtitle: 'Instruct Saka to Tweet on your behalf ',
-              buttonText1: 'Read More',
-            ),
-            FtBox(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
-              title: 'Image Search',
-              subtitle: 'Find people using their public photos',
-              buttonText1: 'Read More',
-            ),
-            FtBox(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
-              title: 'Breaking News',
-              subtitle: 'Important news update',
-              buttonText1: 'Read More',
-            ),
-            FtBox(
-              imageUrl:
-                  'https://images.unsplash.com/photo-1616832880334-b1004d9808da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1336&q=80',
-              title: 'Breaking News',
-              subtitle: 'Important news update',
-              buttonText1: 'Read More',
-            ),
-          ],
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: SingleChildScrollView(
+          child: Column(
+            children: <Widget>[
+              FeatureCard(
+                title: "Set Reminders",
+                description:
+                    "Stay alerted on your bills by creating personalized reminders that would appear in your calendar to avoid paying late fee.",
+              ),
+              FeatureCard(
+                title: "Set Reminders",
+                description:
+                    "Stay alerted on your bills by creating personalized reminders that would appear in your calendar to avoid paying late fee.",
+              ),
+              FeatureCard(
+                title: "Set Reminders",
+                description:
+                    "Stay alerted on your bills by creating personalized reminders that would appear in your calendar to avoid paying late fee.",
+              ),
+              SizedBox(height: 16),
+              FeatureCard(
+                title: "Manage Bills",
+                description:
+                    "Keep all your bills in one place - from electricity, internet, fuel to child support bills. Take control and track them easily.",
+              ),
+            ],
+          ),
         ),
       ),
       bottomNavigationBar: Container(
@@ -126,7 +119,7 @@ class _MainPageState extends State<MainPage> {
             // Navigate to the selected screen based on index
             switch (newIndex) {
               case 0:
-                Navigator.pushNamed(context, '/apps');
+                Navigator.pushNamed(context, '/display');
                 break;
               case 1:
                 Navigator.pushNamed(context, '/image');
@@ -154,6 +147,45 @@ class _MainPageState extends State<MainPage> {
           elevation: 8,
           unselectedLabelStyle:
               TextStyle(fontWeight: FontWeight.normal, color: Colors.black),
+        ),
+      ),
+    );
+  }
+}
+
+class FeatureCard extends StatelessWidget {
+  final String title;
+  final String description;
+
+  FeatureCard({required this.title, required this.description});
+
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      shape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(10.0),
+      ),
+      elevation: 4.0,
+      child: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: <Widget>[
+            Text(
+              title,
+              style: TextStyle(
+                fontSize: 18,
+                fontWeight: FontWeight.bold,
+              ),
+            ),
+            SizedBox(height: 8),
+            Text(
+              description,
+              style: TextStyle(
+                fontSize: 14,
+              ),
+            ),
+          ],
         ),
       ),
     );

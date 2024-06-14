@@ -42,7 +42,7 @@ class Login extends StatelessWidget {
                 onPressed: () {
                   Navigator.push(
                     context,
-                    MaterialPageRoute(builder: (context) => MainPage()),
+                    MaterialPageRoute(builder: (context) => DisPage()),
                   );
                 },
                 child: Text('Login'),
