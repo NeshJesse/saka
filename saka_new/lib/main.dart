@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'screens/splash.dart';
-import 'screens/saka.dart';
+import 'screens/image.dart';
 import 'screens/account.dart';
 import 'screens/feat.dart';
 import 'screens/scrape.dart';
