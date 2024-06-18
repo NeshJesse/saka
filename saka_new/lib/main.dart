@@ -2,10 +2,9 @@ import 'package:flutter/material.dart';
 import 'screens/splash.dart';
 import 'screens/image.dart';
 import 'screens/account.dart';
-import 'screens/feat.dart';
+
 import 'screens/scrape.dart';
 import 'screens/bmark.dart';
-import 'screens/display.dart';
 
 void main() {
   runApp(MyApp());
@@ -80,25 +79,14 @@ class _DisPageState extends State<DisPage> {
           child: Column(
             children: <Widget>[
               FeatureCard(
-                title: "Set Reminders",
+                title: "Search for products",
                 description:
-                    "Stay alerted on your bills by creating personalized reminders that would appear in your calendar to avoid paying late fee.",
+                    "Search for products using images and check their prices before you make a decision to buy.",
               ),
               FeatureCard(
                 title: "Set Reminders",
                 description:
                     "Stay alerted on your bills by creating personalized reminders that would appear in your calendar to avoid paying late fee.",
-              ),
-              FeatureCard(
-                title: "Set Reminders",
-                description:
-                    "Stay alerted on your bills by creating personalized reminders that would appear in your calendar to avoid paying late fee.",
-              ),
-              SizedBox(height: 16),
-              FeatureCard(
-                title: "Manage Bills",
-                description:
-                    "Keep all your bills in one place - from electricity, internet, fuel to child support bills. Take control and track them easily.",
               ),
             ],
           ),
