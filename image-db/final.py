@@ -1,5 +1,9 @@
 import os
 import requests
+from flask import Flask, request, jsonify
+from flask_pymongo import PyMongo
+from flask_bcrypt import Bcrypt
+from werkzeug.security import generate_password_hash, check_password_hash
 from flask import Flask, request, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 from flask_pymongo import PyMongo
@@ -31,6 +35,27 @@ os.makedirs(RESULT_FOLDER, exist_ok=True)
 def allowed_file(filename):
     return '.' in filename and \
            filename.rsplit('.', 1)[1].lower() in ALLOWED_EXTENSIONS
+
+@app.route('/signup', methods=['POST'])
+def signup():
+    data = request.get_json()
+    username = data.get('username')
+    password = data.get('password')
+    
+    if not username or not password:
+        return jsonify({'error': 'Username and password are required'}), 400
+    
+    # Check if the username already exists
+    user = mongo.db.users.find_one({'username': username})
+    if user:
+        return jsonify({'error': 'Username already exists'}), 400
+    
+    # Hash the password and save the user in the database
+    hashed_password = generate_password_hash(password).decode('utf-8')
+    mongo.db.users.insert_one({'username': username, 'password': hashed_password})
+    
+    return jsonify({'message': 'User registered successfully'}), 201
+
 
 @app.route('/upload', methods=['POST'])
 def upload_file():
@@ -65,7 +90,7 @@ def upload_file():
         )
         
         return 'File successfully uploaded and image search performed'
-        return 'File successfully uploaded'
+
 
 @app.route('/home')
 def home():

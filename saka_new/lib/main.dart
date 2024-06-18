@@ -52,7 +52,7 @@ class _DisPageState extends State<DisPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("SakaBOT"),
+        title: const Text("SakaPrice"),
         centerTitle: true,
         shape: const RoundedRectangleBorder(
           borderRadius: BorderRadius.only(
