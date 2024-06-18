@@ -1,6 +1,6 @@
 import os
 import requests
-from flask import Flask, request, redirect, url_for, render_template, send_from_directory
+from flask import Flask, request, url_for, render_template, send_from_directory
 from werkzeug.utils import secure_filename
 from flask_pymongo import PyMongo
 from dotenv import load_dotenv
@@ -16,7 +16,7 @@ API_KEY = os.getenv('SERP_API_KEY')
 
 # Configure the upload folder and allowed extensions
 UPLOAD_FOLDER = 'uploads/'
-RESULT_FOLDER = 'results/'  # Added RESULT_FOLDER
+RESULT_FOLDER = 'results/'
 ALLOWED_EXTENSIONS = {'png', 'jpg', 'jpeg', 'gif'}
 app.config['UPLOAD_FOLDER'] = UPLOAD_FOLDER
 app.config['RESULT_FOLDER'] = RESULT_FOLDER
@@ -38,7 +38,7 @@ def home():
     images = list(mongo.db.images.find())
     for image in images:
         app.logger.info(f"Image: {image}")
-    return render_template('home.html', images=images)
+    return render_template('index.html', images=images)
 
 @app.route('/upload-data', methods=['POST'])
 def upload_file_search():
@@ -53,7 +53,8 @@ def upload_file_search():
         file.save(file_path)
         
         # Save file info to MongoDB
-        image_id = mongo.db.images.insert_one({'filename': filename, 'filepath': file_path}).inserted_id
+        image_doc = {'filename': filename, 'filepath': file_path}
+        image_id = mongo.db.images.insert_one(image_doc).inserted_id
         
         # Perform Google Reverse Image Search using SerpAPI
         search_url = "https://serpapi.com/search"
@@ -68,7 +69,7 @@ def upload_file_search():
         
         app.logger.info(f"Search result: {result}")
         
-        # Save the search result to MongoDB (optional)
+        # Update the specific document with the search result
         mongo.db.images.update_one(
             {'_id': image_id},
             {'$set': {'search_result': result}}
@@ -82,4 +83,3 @@ def uploaded_file(filename):
 
 if __name__ == '__main__':
     app.run(debug=True)
-
