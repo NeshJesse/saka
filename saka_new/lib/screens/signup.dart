@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
+import '../main.dart';
 
 class SignupPage extends StatefulWidget {
   @override
@@ -51,7 +52,13 @@ class _SignupPageState extends State<SignupPage> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: _signup,
+              onPressed: () {
+                //_signup,
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SearchPage()),
+                );
+              },
               child: Text('Sign Up'),
             ),
           ],
@@ -60,7 +67,3 @@ class _SignupPageState extends State<SignupPage> {
     );
   }
 }
-
-void main() => runApp(MaterialApp(
-      home: SignupPage(),
-    ));

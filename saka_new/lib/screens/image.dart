@@ -9,6 +9,14 @@ class SearchPage extends StatefulWidget {
 }
 
 class _SearchPageState extends State<SearchPage> {
+  int _currentIndex = 0;
+
+  @override
+  void initState() {
+    super.initState();
+    _currentIndex = 0; // Initialize currentIndex
+  }
+
   final TextEditingController _searchController = TextEditingController();
   File? _selectedImage;
   final ImagePicker _picker = ImagePicker();
@@ -182,6 +190,47 @@ class _SearchPageState extends State<SearchPage> {
               ),
             ),
           ],
+        ),
+      ),
+      bottomNavigationBar: Container(
+        decoration: BoxDecoration(
+          border: Border(
+            top: BorderSide(
+              color: Colors.grey[300]!, // Border color
+              width: 1.0, // Border width
+            ),
+          ),
+        ),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (int newIndex) {
+            // Navigate to the selected screen based on index
+            switch (newIndex) {
+              case 0:
+                Navigator.pushNamed(context, '/image');
+                break;
+              case 1:
+                Navigator.pushNamed(context, '/bookmark');
+                break;
+              case 2:
+                Navigator.pushNamed(context, '/account');
+                break;
+            }
+          },
+          backgroundColor: Colors.white,
+          selectedItemColor: Colors.black,
+          unselectedItemColor: Colors.lightBlue[200],
+          type: BottomNavigationBarType.fixed,
+          items: const [
+            BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.bookmark), label: 'Bookmark'),
+            BottomNavigationBarItem(
+                icon: Icon(Icons.account_circle_rounded), label: 'Account'),
+          ],
+          elevation: 8,
+          unselectedLabelStyle:
+              TextStyle(fontWeight: FontWeight.normal, color: Colors.black),
         ),
       ),
     );
